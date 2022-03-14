@@ -1,0 +1,16 @@
+version: "2"
+services:
+  web:
+    container_name: application-name
+    working_dir: /var/www/app
+    build:
+        context: .
+    network_mode: bridge
+    volumes:
+      - ./:/var/www/app
+    command: >
+      bash -c "
+          tail -f /dev/null
+        "
+    ports:
+      - "3000:3000"
