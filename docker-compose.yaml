@@ -1,16 +1,14 @@
-version: "3.3"
+version: "3.8"
 services:
   web:
     container_name: centos7-php8.1
     working_dir: /var/www/html
     build:
-        context: .
+        context: ./docker
     network_mode: bridge
     volumes:
       - ./app:/var/www/html
-#    command: >
-#      bash -c "
-#          tail -f /dev/null
-#        "
+      - ./docker/init.sh:/docker-entrypoint-initdb.d/init.sh
+    entrypoint: /docker-entrypoint-initdb.d/init.sh
     ports:
       - "80:80"
