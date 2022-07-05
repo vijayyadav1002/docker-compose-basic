@@ -12,3 +12,4 @@ services:
     entrypoint: /docker-entrypoint-initdb.d/init.sh
     ports:
       - "80:80"
+    hostname: centos7-php8.1.local
